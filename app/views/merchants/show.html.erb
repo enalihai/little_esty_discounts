@@ -1,6 +1,7 @@
 <h1><%= @merchant.name %></h1>
 <%= link_to "This Merchant's Items", "/merchants/#{@merchant.id}/items" %>
 <%= link_to "This Merchant's Invoices", "/merchants/#{@merchant.id}/invoices" %>
+<%= link_to "TThis Merchant's Bulk Discounts", "/merchants/#{@merchant.id}/bulk_discounts" %>
 <br>
 <h3> Top 5 Customers</h3>
   <ol type="1">

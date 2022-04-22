@@ -1,0 +1,9 @@
+<h1><%=@merchant.name %>'s Bulk Discounts </h1>
+
+<div id="bulk_discounts">
+<% @merchant.bulk_discounts.each do |discount| %>
+  <p><%= discount.quantity_threshold  %> items purchased
+    <%= discount.percentage_discount  %>%
+  </p>
+<% end %>
+</div>
