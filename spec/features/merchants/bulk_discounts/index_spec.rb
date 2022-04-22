@@ -9,7 +9,7 @@ RSpec.describe 'merchant bulk discount index' do
     bulk_discount_2 = merchant_1.bulk_discounts.create(percentage_discount: 30, quantity_threshold:25  )
     bulk_discount_3 = merchant_2.bulk_discounts.create(percentage_discount: 10, quantity_threshold:22  )
 
-    visit "/merchants/#{merchant_1.id}/dashboard/bulk_discounts"
+    visit "/merchants/#{merchant_1.id}/bulk_discounts"
 
     within"#bulk_discounts" do
       expect(page).to have_content('20%')

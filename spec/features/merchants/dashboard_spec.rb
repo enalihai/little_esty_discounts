@@ -21,6 +21,20 @@ RSpec.describe 'merchant dashboard page' do
     expect(page).to have_current_path("/merchants/#{merchant_1.id}/invoices")
   end
 
+  it 'links to merchant bulk discounts' do
+    merchant_1 = Merchant.create!(name: "Geddy's Skydiving Emporium")
+    visit "/merchants/#{merchant_1.id}/dashboard"
+    click_link("This Merchant's Bulk Discounts")
+    expect(page).to have_current_path(visit "/merchants/#{merchant_1.id}/bulk_discounts")
+  end
+
+  it 'links to merchant invoices' do
+    merchant_1 = Merchant.create!(name: "Geddy's Skydiving Emporium")
+    visit "/merchants/#{merchant_1.id}/dashboard"
+    click_link("This Merchant's Invoices")
+    expect(page).to have_current_path("/merchants/#{merchant_1.id}/invoices")
+  end
+
   it 'shows the top five customers' do
     merchant = Merchant.create(name: "Braum's")
     item = merchant.items.create(name: "Beyblade", description: "Let it rip!", unit_price: 1000)
