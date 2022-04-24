@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "Merchant Dashboard" do
   before :each do
-    @merchant1 = create(:merchant)
-    @merchant2 = create(:merchant)
+    @merchant_1 = Merchant.create!(name: "Mollys")
+    @merchant_2 = Merchant.create!(name: "Berrys")
 
     @discount1 = @merchant1.discounts.create!(name: "Christmas", threshold: 10, percent: 15)
     @discount2 = @merchant1.discounts.create!(name: "All Saint's Day", threshold: 15, percent: 20)
@@ -34,5 +34,5 @@ RSpec.describe "Merchant Dashboard" do
     expect(page).to have_content(@discount2.name)
     expect(page).to have_content(@discount3.name)
     expect(page).to_not have_content(@discount4.name)
-  end 
+  end
 end
