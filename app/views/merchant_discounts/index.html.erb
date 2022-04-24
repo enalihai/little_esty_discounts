@@ -1,0 +1,11 @@
+<div class="index-page">
+  <h1>Current Promotions</h1>
+
+  <ul class="list">
+    <% @merchant.discounts.each do |discount| %>
+      <%= discount.name %><br>
+      Quantity Needed: <%= discount.threshold %>
+      Percent Discounted: <%= discount.percent %>
+    <% end %>
+  </ul>
+</div>
