@@ -1,7 +1,11 @@
 <h1><%= @merchant.name %></h1>
 <%= link_to "This Merchant's Items", "/merchants/#{@merchant.id}/items" %>
-<%= link_to "This Merchant's Invoices", "/merchants/#{@merchant.id}/invoices" %>
-<%= link_to "TThis Merchant's Bulk Discounts", "/merchants/#{@merchant.id}/bulk_discounts" %>
+<%= link_to "This Merchant's Invoices", "/merchants/#{@merchant.id}/invoices" %><br>
+
+<div id="promotions-button">
+  <h2><%= button_to "Promotions", "/merchants/#{@merchant.id}/discounts", method: :get %></h2>
+</div>
+
 <br>
 <h3> Top 5 Customers</h3>
   <ol type="1">
