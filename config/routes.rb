@@ -26,10 +26,12 @@ Rails.application.routes.draw do
     get '/invoice_items/:invoice_item_id', to: 'merchant_invoice_items#show'
     patch '/invoice_items/:invoice_item_id', to: 'merchant_invoice_items#update'
     delete '/invoice_items/:invoice_item_id', to: 'merchant_invoice_items#destroy'
+
   end
+  
+  get '/merchants/:id/discounts', to: 'merchant_discounts#index'
 
   get '/merchants/:id/dashboard', to: 'merchants#show'
-  get '/merchants/:id/bulk_discounts', to: 'merchant_bulk_discounts#index'
 
   resources :admin, only: [:index]
 
