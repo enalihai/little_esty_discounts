@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get '/merchants/:id/discounts/:id', to: 'merchant_discounts#show'
   delete '/merchants/:id/discounts/:id', to: 'merchant_discounts#destroy'
   get '/merchants/:id/discounts/:id/edit', to: 'merchant_discounts#edit'
+  patch '/merchants/:id/discounts/:id/edit', to: 'merchant_discounts#edit'
   post '/merchants/:id/discounts/:id/edit', to: 'merchant_discounts#update'
 
 
