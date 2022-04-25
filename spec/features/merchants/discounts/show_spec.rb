@@ -15,7 +15,7 @@ RSpec.describe 'discount show page', type: :feature do
   it 'exists and displays the attributes of the discount' do
     visit "/merchants/#{@merchant_1.id}/discounts/#{@discount_1.id}"
 
-    expect(page).to have_content("Christmas")
+    expect(page).to have_content("Discount Name: Christmas")
     expect(page).to have_content("Quantity Needed: #{@discount_1.threshold} items")
     expect(page).to have_content("Percent Discounted: #{@discount_1.percent}%")
     expect(page).to_not have_content("Percent Discounted: #{@discount_2.percent}%")
