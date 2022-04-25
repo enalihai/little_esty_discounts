@@ -27,16 +27,16 @@ RSpec.describe 'create new discounts' do
 
     click_link("Edit Discount")
 
-    fill_in :name, with: "0mas"
-    fill_in :threshold, with: 0
-    fill_in :percent, with: 0
+    fill_in :name, with: "Xmas"
+    fill_in :threshold, with: 30
+    fill_in :percent, with: 30
 
     click_button("Submit")
 
     expect(current_path).to eq("/merchants/#{@merchant_1.id}/discounts/#{@discount_1.id}")
 
-    expect(page).to have_content("Discount Name: 0mas")
-    expect(page).to have_content("Quantity Needed: 0 items")
-    expect(page).to have_content("Percent Discounted: 0%")
+    expect(page).to have_content("Discount Name: Xmas")
+    expect(page).to have_content("Quantity Needed: 30 items")
+    expect(page).to have_content("Percent Discounted: 30%")
   end
 end
