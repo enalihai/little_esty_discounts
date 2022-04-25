@@ -5,6 +5,8 @@ class Invoice < ApplicationRecord
   has_many :items, through: :invoice_items
   has_many :merchants, through: :items
 
+  validates_presence_of :status
+
   enum status: ["in progress".to_sym, :completed, :cancelled]
 
   def self.incomplete
