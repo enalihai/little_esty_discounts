@@ -1,0 +1,4 @@
+<div class="feature-box">
+  <h1>Discount Edit Page</h1>
+  <%= render partial: "form", locals: {path: "/merchants/#{@discount.merchant.id}/discounts/#{@discount.id}/edit", method: :patch, label: "Submit",} %>
+</div>

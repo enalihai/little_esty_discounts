@@ -23,6 +23,16 @@ class MerchantDiscountsController < ApplicationController
     @discount = Discount.find(params[:id])
   end
 
+  def update
+    @discount = Discount.find(params[:id])
+    if @discount.update(promo_params)
+      redirect_to "/merchants/#{@discount.merchant.id}/discounts/#{@discount.id}"
+    else
+      redirect_to "/merchants/#{@discount.merchant.id}/discounts/#{@discount.id}"
+      flash[:message] = "Error - Invalid Input"
+    end
+  end
+
   def destroy
     @discount = Discount.find(params[:id])
     merch_id = @discount.merchant_id

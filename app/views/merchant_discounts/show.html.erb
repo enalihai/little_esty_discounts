@@ -4,4 +4,5 @@
     <p>Discount Name: <%= @discount.name %></p><br>
     <p>Quantity Needed: <%= @discount.threshold %> items </p><br>
     <p>Percent Discounted: <%= @discount.percent %>%<br>
+      <%= link_to "Edit Discount", "/merchants/#{@discount.merchant.id}/discounts/#{@discount.id}/edit", method: :get %>
 </div>
