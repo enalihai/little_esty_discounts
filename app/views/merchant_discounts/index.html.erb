@@ -1,13 +1,14 @@
 <div class="feature-box">
-  <h1>Current Promotions</h1>
+  <h1>Current Available Discounts</h1>
 
   <ul id="discounts-list">
     <% @merchant.discounts.each do |discount| %>
-      <li><%= link_to discount.name, "/merchants/#{@merchant.id}/discounts/#{discount.id}" %><br>
+    <br>
+      <div id="<%="disc-#{discount.id}"%>"> <%= link_to discount.name, "/merchants/#{@merchant.id}/discounts/#{discount.id}" %><br>
       Quantity Needed: <%= discount.threshold %> items<br>
-      Percent Discounted: <%= discount.percent %>% off</li><br>
-      <br>
+      Percent Discounted: <%= discount.percent %>% off<br>
+      <%= link_to "Delete Promotion", "/merchants/#{@merchant.id}/discounts/#{discount.id}", method: :delete %></div><br>
     <% end %>
   </ul>
-  <h3><%= link_to 'Create New Promotion', "/merchants/#{@merchant.id}/discounts/new", method: :get %></h3>
+  <%= link_to "Create New Promotion", "/merchants/#{@merchant.id}/discounts/new", method: :get %>
 </div>

@@ -1,12 +1,12 @@
 <div class="feature-box">
   <%= form_with url: "/merchants/#{@merchant.id}/discounts/", method: :post, local: true do |f| %>
-    <li>Discount Name:
+    <li>
       <%= f.label :name%>
       <%= f.text_field :name%></li><br>
-    <li>Discount Threshold:
+    <li>
       <%= f.label :threshold %>
       <%= f.text_field :threshold %></li><br>
-    <li>Discount Percent:
+    <li>
       <%= f.label :percent %>
       <%= f.text_field :percent %></li><br>
 
