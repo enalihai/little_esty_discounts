@@ -29,7 +29,7 @@ RSpec.describe 'create new discounts' do
 
     within("div#disc-#{@discount_1.id}") do
       click_link("Edit Discount")
-    end 
+    end
 
     fill_in :name, with: "Xmas"
     fill_in :threshold, with: 30
@@ -42,5 +42,25 @@ RSpec.describe 'create new discounts' do
     expect(page).to have_content("Discount Name: Xmas")
     expect(page).to have_content("Quantity Needed: 30 items")
     expect(page).to have_content("Percent Discounted: 30%")
+  end
+
+  it 'looks for valid input ###edge' do
+    visit "/merchants/#{@merchant_1.id}/discounts"
+
+    within("div#disc-#{@discount_1.id}") do
+      click_link("Edit Discount")
+    end
+
+    fill_in :threshold, with: 30
+    fill_in :percent, with: 30
+
+    click_button("Submit")
+
+    expect(current_path).to eq("/merchants/#{@merchant_1.id}/discounts/#{@discount_1.id}/edit")
+
+    expect(page).to have_content("Name")
+    expect(page).to have_content("Threshold")
+    expect(page).to have_content("Percent")
+    expect(page).to have_button("Discounts Index")
   end
 end

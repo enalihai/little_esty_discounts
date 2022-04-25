@@ -15,13 +15,13 @@ RSpec.describe 'create new discounts' do
   it 'has a link to create a new discount' do
     visit "/merchants/#{@merchant_1.id}/discounts"
 
-    click_link "Create New Promotion"
+    click_link "Create New Discount"
   end
 
   it 'takes me to a form to make a new discount then takes me back to the merchants discount page where I see the new discount' do
     visit "/merchants/#{@merchant_1.id}/discounts"
 
-    click_link "Create New Promotion"
+    click_link "Create New Discount"
 
     fill_in :name, with: "International Championship"
     fill_in :threshold, with: 20
@@ -68,5 +68,11 @@ RSpec.describe 'create new discounts' do
     click_button "Submit"
 
     expect(current_path).to eq("/merchants/#{@merchant_1.id}/discounts/new")
+  end
+
+  it 'has a button to the discounts index' do
+    visit "/merchants/#{@merchant_1.id}/discounts/new"
+    
+    expect(page).to have_button("Discounts Index")
   end
 end

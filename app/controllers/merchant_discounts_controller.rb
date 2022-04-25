@@ -10,17 +10,13 @@ class MerchantDiscountsController < ApplicationController
     if @discount.save
       redirect_to "/merchants/#{@merchant.id}/discounts"
     else
-      flash[:notice] = "Invalid Input - fields must be filled out correctly"
-      render :new
+      redirect_to "/merchants/#{@merchant.id}/discounts/#{@discount.id}/edit"
+      flash[:message] = "Invalid Input"
     end
   end
 
   def new
     @merchant = Merchant.find(params[:id])
-  end
-
-  def show
-    @discount = Discount.find(params[:id])
   end
 
   def edit
@@ -32,9 +28,13 @@ class MerchantDiscountsController < ApplicationController
     if @discount.update(disc_params)
       redirect_to "/merchants/#{@discount.merchant.id}/discounts/#{@discount.id}"
     else
-      redirect_to "/merchants/#{@discount.merchant.id}/discounts/#{@discount.id}"
-      flash[:message] = "Error - Invalid Input"
+      redirect_to "/merchants/#{@discount.merchant.id}/discounts/#{@discount.id}/edit"
+      flash[:message] = "Invalid Input"
     end
+  end
+
+  def show
+    @discount = Discount.find(params[:id])
   end
 
   def destroy
