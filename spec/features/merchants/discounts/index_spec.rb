@@ -39,4 +39,15 @@ RSpec.describe "Merchant Dashboard" do
       expect(page).to_not have_content(@discount_4.name)
     end
   end
+
+  it 'has a delete button that works' do
+    visit "/merchants/#{@merchant_1.id}/discounts"
+
+    within("div#disc-#{@discount_1.id}") do
+      click_link("Delete Promotion")
+    end
+
+    expect(current_path).to eq("/merchants/#{@merchant_1.id}/discounts")
+    expect(page).to_not have_content("#{@discount_1.name}")
+  end
 end
