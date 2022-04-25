@@ -37,4 +37,23 @@ RSpec.describe 'create new discounts' do
       expect(page).to have_content("Percent Discounted: 25%")
     end
   end
+
+  # it 'tests for empty input and edge cases' do
+  #   visit "/merchants/#{@merchant_1.id}/discounts/new"
+  #   fill_in :threshold, with: 10
+  #   fill_in :percent, with: 15
+  #   click_button "Submit"
+  #
+  #   expect(page).to have_content("Error: Fields cant be empty, use integers for threshold and percent")
+  # end
+  #
+  # it 'tests for symbols and edge cases' do
+  #   visit "/merchants/#{@merchant_1.id}/discounts/new"
+  #   fill_in :name, with: "Lou's Bobba"
+  #   fill_in :threshold, with: 10
+  #   fill_in :percent, with: "%"
+  #   click_button "Submit"
+  #
+  #   expect(page).to have_content("Error: Fields cant be empty, use integers for threshold and percent")
+  # end
 end
