@@ -6,12 +6,19 @@
     <br>
       <div id="<%="disc-#{discount.id}"%>">
         <%= link_to discount.name, "/merchants/#{@merchant.id}/discounts/#{discount.id}" %><br>
-      Quantity Needed: <%= discount.threshold %> items<br>
-      Percent Discounted: <%= discount.percent %>% off<br>
-      <%= link_to "Delete Promotion", "/merchants/#{@merchant.id}/discounts/#{discount.id}", method: :delete %><br>
-      <%= link_to "Edit Discount", "/merchants/#{@merchant.id}/discounts/#{discount.id}/edit", method: :get %>
+        Quantity Needed: <%= discount.threshold %> items<br>
+        Percent Discounted: <%= discount.percent %>% off<br>
+        <div class="link-to">
+          <%= link_to "Delete Discount", "/merchants/#{@merchant.id}/discounts/#{discount.id}", method: :delete %><br>
+        </div>
+        <br>
+        <div class="link-to">
+          <%= link_to "Edit Discount", "/merchants/#{@merchant.id}/discounts/#{discount.id}/edit", method: :get %>
+        </div>
       </div>
     <% end %>
-  </ul>
-  <%= link_to "Create New Promotion", "/merchants/#{@merchant.id}/discounts/new", method: :get %>
+  </ul><br>
+  <div class="link-to">
+    <%= link_to "Create New Discount", "/merchants/#{@merchant.id}/discounts/new", method: :get %>
+  </div>
 </div>

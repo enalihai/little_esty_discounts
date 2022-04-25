@@ -3,4 +3,8 @@
   <div class="form">
     <%= render partial: "form", locals: { path:"/merchants/#{@merchant.id}/discounts", method: :post, label: "Submit",} %>
   </div>
+
+  <div class="link-to">
+    <%= button_to "Discounts Index", "/merchants/#{@merchant.id}/discounts", method: :get %>
+  </div>
 </div>
