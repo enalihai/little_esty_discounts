@@ -12,7 +12,6 @@
   background: white;
   outline: 1px solid white;
   outline-offset: 1px;
-  width: 15%;
 }
 
 .button-to {
@@ -20,5 +19,4 @@
   background: darkgrey;
   outline: 5px solid darkgrey;
   outline-offset: 5px;
-  width: 15%;
 }
