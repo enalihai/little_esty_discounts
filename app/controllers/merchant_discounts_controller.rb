@@ -10,8 +10,8 @@ class MerchantDiscountsController < ApplicationController
     if @discount.save
       redirect_to "/merchants/#{@merchant.id}/discounts"
     else
-      redirect_to "/merchants/#{@merchant.id}/discounts"
-      flash[:alert] = "Error: Fields cant be empty, use integers for threshold and percent"
+      flash[:notice] = "Invalid Input - fields must be filled out correctly"
+      render :new
     end
   end
 
