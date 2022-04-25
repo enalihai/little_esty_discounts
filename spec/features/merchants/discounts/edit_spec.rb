@@ -13,9 +13,11 @@ RSpec.describe 'create new discounts' do
   end
 
   it 'has a link to edit the discount' do
-    visit "/merchants/#{@merchant_1.id}/discounts/#{@discount_1.id}"
+    visit "/merchants/#{@merchant_1.id}/discounts"
 
-    click_link("Edit Discount")
+    within("div#disc-#{@discount_1.id}") do
+      click_link("Edit Discount")
+    end
 
     expect(current_path).to eq("/merchants/#{@merchant_1.id}/discounts/#{@discount_1.id}/edit")
 
@@ -23,9 +25,11 @@ RSpec.describe 'create new discounts' do
   end
 
   it 'takes me back to the discount show page and has updated attributes' do
-    visit "/merchants/#{@merchant_1.id}/discounts/#{@discount_1.id}"
+    visit "/merchants/#{@merchant_1.id}/discounts"
 
-    click_link("Edit Discount")
+    within("div#disc-#{@discount_1.id}") do
+      click_link("Edit Discount")
+    end 
 
     fill_in :name, with: "Xmas"
     fill_in :threshold, with: 30
