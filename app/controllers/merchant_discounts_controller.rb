@@ -23,9 +23,13 @@ class MerchantDiscountsController < ApplicationController
     @discount = Discount.find(params[:id])
   end
 
+  def edit
+    @discount = Discount.find(params[:id])
+  end
+
   def update
     @discount = Discount.find(params[:id])
-    if @discount.update(promo_params)
+    if @discount.update(disc_params)
       redirect_to "/merchants/#{@discount.merchant.id}/discounts/#{@discount.id}"
     else
       redirect_to "/merchants/#{@discount.merchant.id}/discounts/#{@discount.id}"
