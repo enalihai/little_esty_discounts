@@ -22,17 +22,21 @@ RSpec.describe "Merchant Dashboard" do
   it 'displays all of the attributes of a discount' do
     visit "/merchants/#{@merchant_1.id}/discounts"
 
-    expect(page).to have_content(@discount_1.name)
-    expect(page).to have_content(@discount_1.threshold)
-    expect(page).to have_content(@discount_1.percent)
+    within "ul#discounts-list" do
+      expect(page).to have_content(@discount_1.name)
+      expect(page).to have_content(@discount_1.threshold)
+      expect(page).to have_content(@discount_1.percent)
+    end
   end
 
   it "has shows only that specific merchants discounts" do
     visit "/merchants/#{@merchant_1.id}/discounts"
 
-    expect(page).to have_content(@discount_1.name)
-    expect(page).to have_content(@discount_2.name)
-    expect(page).to have_content(@discount_3.name)
-    expect(page).to_not have_content(@discount_4.name)
+    within "ul#discounts-list" do
+      expect(page).to have_content(@discount_1.name)
+      expect(page).to have_content(@discount_2.name)
+      expect(page).to have_content(@discount_3.name)
+      expect(page).to_not have_content(@discount_4.name)
+    end
   end
 end

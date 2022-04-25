@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   end
 
   get '/merchants/:id/discounts', to: 'merchant_discounts#index'
+  get '/merchants/:id/discounts/new', to: 'merchant_discounts#new'
+  post '/merchants/:id/discounts', to: 'merchant_discounts#create'
   get '/merchants/:id/discounts/:id', to: 'merchant_discounts#show'
 
   get '/merchants/:id/dashboard', to: 'merchants#show'
