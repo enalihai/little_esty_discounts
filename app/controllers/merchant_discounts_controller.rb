@@ -9,6 +9,7 @@ class MerchantDiscountsController < ApplicationController
 
     if @discount.save
       redirect_to "/merchants/#{@merchant.id}/discounts"
+      flash[:message] = "New Discount Created"
     else
       redirect_to "/merchants/#{@merchant.id}/discounts/#{@discount.id}/edit"
       flash[:message] = "Invalid Input"
@@ -27,8 +28,9 @@ class MerchantDiscountsController < ApplicationController
     @discount = Discount.find(params[:id])
     if @discount.update(disc_params)
       redirect_to "/merchants/#{@discount.merchant.id}/discounts/#{@discount.id}"
+      flash[:message] = "Discount Updated!"
     else
-      redirect_to "/merchants/#{@discount.merchant.id}/discounts/#{@discount.id}/edit"
+      render "edit"
       flash[:message] = "Invalid Input"
     end
   end
