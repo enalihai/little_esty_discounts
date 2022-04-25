@@ -1,0 +1,7 @@
+<div class="feature-box">
+  <h1>Create New Discount</h1><br>
+  <div class="form">
+    <%= render partial: "form", locals: { path:"/merchants/#{@merchant.id}/discounts", method: :post, label: "Submit",} %>
+  </div>
+
+</div>
