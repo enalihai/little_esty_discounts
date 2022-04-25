@@ -9,14 +9,30 @@ class MerchantDiscountsController < ApplicationController
 
     if @discount.save
       redirect_to "/merchants/#{@merchant.id}/discounts"
+      flash[:message] = "New Discount Created"
     else
-      redirect_to "/merchants/#{@merchant.id}/discounts"
-      flash[:alert] = "Error: Fields cant be empty, use integers for threshold and percent"
+      redirect_to "/merchants/#{@merchant.id}/discounts/#{@discount.id}/edit"
+      flash[:message] = "Invalid Input"
     end
   end
 
   def new
     @merchant = Merchant.find(params[:id])
+  end
+
+  def edit
+    @discount = Discount.find(params[:id])
+  end
+
+  def update
+    @discount = Discount.find(params[:id])
+    if @discount.update(disc_params)
+      redirect_to "/merchants/#{@discount.merchant.id}/discounts/#{@discount.id}"
+      flash[:message] = "Discount Updated!"
+    else
+      render "edit"
+      flash[:message] = "Invalid Input"
+    end
   end
 
   def show

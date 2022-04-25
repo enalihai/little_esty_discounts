@@ -1,5 +1,24 @@
 .feature-box {
-  border: 2px solid black;
+  background: lightgrey;
+  padding: 2em;
   justify-content: center;
-  align-items: center;
+  margin: 0em auto 10em;
+  outline: 5px solid lightgrey;
+  outline-offset: 5px;
+}
+
+.link-to {
+  margin: auto;
+  background: white;
+  outline: 1px solid white;
+  outline-offset: 1px;
+  width: 15%;
+}
+
+.button-to {
+  margin: auto;
+  background: darkgrey;
+  outline: 5px solid darkgrey;
+  outline-offset: 5px;
+  width: 15%;
 }

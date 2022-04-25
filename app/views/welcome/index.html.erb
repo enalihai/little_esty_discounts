@@ -1,3 +1,7 @@
 <h1>WELCOME TO THE LITTLE ESTY SHOP</h1>
 
-<%= link_to "Merchants", "/admin/merchants" %>
+<%= button_to "Admin Merchants", "/admin/merchants", method: :get %><br>
+
+<div class="button-to">
+  <%= button_to "Merchants Index", "/merchants", method: :get %>
+</div>

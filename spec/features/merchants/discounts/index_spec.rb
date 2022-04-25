@@ -15,7 +15,7 @@ RSpec.describe "Merchant Dashboard" do
   it "has a link to a merchants discounts" do
     visit "merchants/#{@merchant_1.id}"
 
-    click_button("Promotions")
+    click_button("Discounts")
     expect(current_path).to eq("/merchants/#{@merchant_1.id}/discounts")
   end
 
@@ -44,10 +44,16 @@ RSpec.describe "Merchant Dashboard" do
     visit "/merchants/#{@merchant_1.id}/discounts"
 
     within("div#disc-#{@discount_1.id}") do
-      click_link("Delete Promotion")
+      click_link("Delete Discount")
     end
 
     expect(current_path).to eq("/merchants/#{@merchant_1.id}/discounts")
     expect(page).to_not have_content("#{@discount_1.name}")
+  end
+
+  it 'has a link to create a new discount' do
+    visit "/merchants/#{@merchant_1.id}/discounts"
+
+    expect(page).to have_link("Create New Discount")
   end
 end

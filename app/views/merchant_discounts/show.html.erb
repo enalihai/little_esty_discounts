@@ -1,7 +1,11 @@
 <div class="feature-box">
 
-  <h1>Discount Show Page</h1>
-    <p><%= @discount.name %></p><br>
+  <h1><%= @discount.name %> Discount Show Page</h1>
+    <p>Discount Name: <%= @discount.name %></p><br>
     <p>Quantity Needed: <%= @discount.threshold %> items </p><br>
     <p>Percent Discounted: <%= @discount.percent %>%<br>
+
+  <div class="link-to">
+    <%= button_to "Discounts Index", "/merchants/#{@discount.merchant.id}/discounts", method: :get %>
+  </div>
 </div>

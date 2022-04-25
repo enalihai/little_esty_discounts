@@ -15,13 +15,13 @@ RSpec.describe 'create new discounts' do
   it 'has a link to create a new discount' do
     visit "/merchants/#{@merchant_1.id}/discounts"
 
-    click_link "Create New Promotion"
+    click_link "Create New Discount"
   end
 
   it 'takes me to a form to make a new discount then takes me back to the merchants discount page where I see the new discount' do
     visit "/merchants/#{@merchant_1.id}/discounts"
 
-    click_link "Create New Promotion"
+    click_link "Create New Discount"
 
     fill_in :name, with: "International Championship"
     fill_in :threshold, with: 20
@@ -38,22 +38,41 @@ RSpec.describe 'create new discounts' do
     end
   end
 
-  # it 'tests for empty input and edge cases' do
-  #   visit "/merchants/#{@merchant_1.id}/discounts/new"
-  #   fill_in :threshold, with: 10
-  #   fill_in :percent, with: 15
-  #   click_button "Submit"
-  #
-  #   expect(page).to have_content("Error: Fields cant be empty, use integers for threshold and percent")
-  # end
-  #
-  # it 'tests for symbols and edge cases' do
-  #   visit "/merchants/#{@merchant_1.id}/discounts/new"
-  #   fill_in :name, with: "Lou's Bobba"
-  #   fill_in :threshold, with: 10
-  #   fill_in :percent, with: "%"
-  #   click_button "Submit"
-  #
-  #   expect(page).to have_content("Error: Fields cant be empty, use integers for threshold and percent")
-  # end
+  xit 'tests for empty input###edge' do
+    visit "/merchants/#{@merchant_1.id}/discounts/new"
+    fill_in :threshold, with: 10
+    fill_in :percent, with: 15
+    click_button "Submit"
+
+    expect(page).to have_content("Invalid Input - fields must be filled out correctly")
+  end
+
+  xit 'tests for symbols###edge' do
+    visit "/merchants/#{@merchant_1.id}/discounts/new"
+    fill_in :name, with: "Lou's Bobba"
+    fill_in :threshold, with: 10
+    fill_in :percent, with: "%"
+
+    click_button "Submit"
+
+    expect(page).to have_content("Invalid Input - fields must be filled out correctly")
+  end
+
+  xit 'renders a new form if values are invalid ###edge' do
+    visit "/merchants/#{@merchant_1.id}/discounts/new"
+
+    fill_in :name, with: "Lou's Bobba"
+    fill_in :threshold, with: 10
+    fill_in :percent, with: "%"
+
+    click_button "Submit"
+
+    expect(current_path).to eq("/merchants/#{@merchant_1.id}/discounts/new")
+  end
+
+  it 'has a button to the discounts index' do
+    visit "/merchants/#{@merchant_1.id}/discounts/new"
+    
+    expect(page).to have_button("Discounts Index")
+  end
 end
