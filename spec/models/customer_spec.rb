@@ -9,6 +9,11 @@ RSpec.describe Customer, type: :model do
     it { should have_many(:merchants).through(:items)}
   end
 
+  describe 'validations' do
+    it { should validate_presence_of :first_name}
+    it { should validate_presence_of :last_name}
+  end
+
   describe 'class methods' do
     it '#top_five' do
       bob = Customer.create!(first_name: "Bob", last_name: "Benson")

@@ -9,6 +9,10 @@ RSpec.describe Invoice, type: :model do
     it { should have_many(:merchants).through(:items)}
   end
 
+  describe 'validations' do
+    it { should validate_presence_of :status}
+  end
+
   describe 'class methods' do
     it '#incomplete' do
       walmart = Merchant.create!(name: "Wal-Mart")
@@ -88,6 +92,33 @@ RSpec.describe Invoice, type: :model do
       InvoiceItem.create!(invoice_id: invoice_11.id, item_id: item_11.id, quantity: 1, status: 2)
 
       expect(Invoice.sorted_by_newest.take(5)).to eq([invoice_11, invoice_10, invoice_9, invoice_8, invoice_7])
+    end
+  end
+
+  describe 'instance methods' do
+    before(:each) do
+      @merchant = Merchant.create!(name: "Wal-Mart")
+
+      @item = @merchant.items.create!(name: "pickle", description: "sour cucumber", unit_price: 500)
+      @item_2 = @merchant.items.create!(name: "vinegar", description: "used for pickling", unit_price: 100)
+
+      @customer = Customer.create!(first_name: "Bob", last_name: "Benson")
+      @invoice_1 = @customer.invoices.create!(status: 1)
+      @invoice_2 = @customer.invoices.create!(status: 1)
+
+      @invoice_item = InvoiceItem.create!(invoice_id: @invoice_1.id, item_id: @item.id, quantity: 5, unit_price: 500, status: 1)
+      @invoice_item_2 = InvoiceItem.create!(invoice_id: @invoice_1.id, item_id: @item_2.id, quantity: 5, unit_price: 100, status: 1)
+    end
+
+    it 'can calculate #invoice_total_revenue' do
+
+      expect(@invoice_1.invoice_total_revenue).to eq(3000)
+    end
+
+    it 'can calculate #discount_revenue' do
+      @discount = @merchant.discounts.create!(name: "Brewfest", threshold: 5, percent: 50)
+
+      expect(@invoice.discount_revenue).to eq(1500)
     end
   end
 end
