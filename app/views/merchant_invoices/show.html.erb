@@ -6,7 +6,7 @@
       <p>Created At: <%= @invoice.dates %></p>
       <p>Customer Name: <%= @invoice.full_name %></p>
       <p>Total Revenue: <%= @invoice.invoice_total_revenue %></p>
-      <p>Total Discounted Revenue: <%=  %></p>
+      <p>Total Discounted Revenue: <%= @invoice.discount_revenue %></p>
     </ul>
   <% @invoice.invoice_items.each do |invoice_item|%>
   <div id="item-<%= invoice_item.id %>">
