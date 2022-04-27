@@ -86,4 +86,10 @@ RSpec.describe "Admin Invoices Show" do
 
     expect(page).to have_select(:status, selected: 'Cancelled')
   end
+
+  it 'displays the total revenue from an invoice' do
+    
+  end
+
+  it 'displays the total discounted revenue'
 end
