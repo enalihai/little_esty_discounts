@@ -67,12 +67,12 @@ RSpec.describe 'create new discounts' do
 
     click_button "Submit"
 
-    expect(current_path).to eq("/merchants/#{@merchant_1.id}/discounts/new")
+    expect(current_path).to eq("/merchants/#{@merchant_1.id}//discounts/new")
   end
 
   it 'has a button to the discounts index' do
     visit "/merchants/#{@merchant_1.id}/discounts/new"
-    
+
     expect(page).to have_button("Discounts Index")
   end
 end

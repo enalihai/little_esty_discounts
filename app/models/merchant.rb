@@ -6,6 +6,9 @@ class Merchant < ApplicationRecord
   has_many :customers, through: :invoices
   has_many :transactions, through: :invoices
 
+  validates_presence_of(:name)
+  validates_presence_of(:status)
+
   enum status: [:disabled, :enabled]
 
   def most_popular_items

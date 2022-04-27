@@ -1,26 +1,28 @@
-<h1>Invoice <%=@invoice.id%></h1>
-<br>
-Invoice Status: <%= @invoice.status %>
-<br>
-Created At: <%= @invoice.dates %>
-<br>
-Customer Name: <%= @invoice.full_name %>
-<br>
-Total Revenue: <%= @invoice.invoice_total_revenue %>
-<% @invoice.invoice_items.each do |invoice_item|%>
-<div id="item-<%= invoice_item.id %>">
-  <% if invoice_item.belongs_to_merchant(@merchant.id) %>
-    <h3>Invoice Item <%= invoice_item.id %></h3>
+<div class="feature-box">
+  <h1>Invoice <%=@invoice.id%></h1>
+    <br>
+    <ul>
+      <p>Invoice Status: <%= @invoice.status %></p>
+      <p>Created At: <%= @invoice.dates %></p>
+      <p>Customer Name: <%= @invoice.full_name %></p>
+      <p>Total Revenue: <%= @invoice.invoice_total_revenue %></p>
+      <p>Total Discounted Revenue: <%= @invoice.discount_revenue %></p>
+    </ul>
+  <% @invoice.invoice_items.each do |invoice_item|%>
+  <div id="item-<%= invoice_item.id %>">
+    <% if invoice_item.belongs_to_merchant(@merchant.id) %>
+      <h3>Invoice Item <%= invoice_item.id %></h3>
 
-    Quantity: <%=invoice_item.quantity %>
-    <br>
-    Unit Price: <%=invoice_item.unit_price%>
-    <br>
-    <%= form_with url: "/merchants/#{@merchant.id}/invoice_items/#{invoice_item.id}", method: :patch, local: true do |form| %>
-      <%= form.label "Status" %>
-      <%= form.select(:status, options_for_select([['Pending', :pending], ['Packaged', :packaged], ['Shipped', :shipped]], invoice_item.status)) %>
-      <%= form.submit "Update Item Status" %>
+      Quantity: <%=invoice_item.quantity %>
+      <br>
+      Unit Price: <%=invoice_item.unit_price%>
+      <br>
+      <%= form_with url: "/merchants/#{@merchant.id}/invoice_items/#{invoice_item.id}", method: :patch, local: true do |form| %>
+        <%= form.label "Status" %>
+        <%= form.select(:status, options_for_select([['Pending', :pending], ['Packaged', :packaged], ['Shipped', :shipped]], invoice_item.status)) %>
+        <%= form.submit "Update Item Status" %>
+      <% end %>
     <% end %>
+  </div>
   <% end %>
 </div>
-<% end %>
