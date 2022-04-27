@@ -11,10 +11,10 @@ class MerchantDiscountsController < ApplicationController
 
     if @discount.save
       redirect_to "/merchants/#{@merchant.id}/discounts"
-      flash[:message] = "New Discount Created"
+      # flash[:message] = "New Discount Created"
     else
       redirect_to "/merchants/#{merch_id}/discounts/new"
-      flash[:message] = "Invalid Input"
+      # flash[:message] = "Invalid Input"
     end
   end
 

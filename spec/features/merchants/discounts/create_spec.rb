@@ -42,10 +42,11 @@ RSpec.describe 'create new discounts' do
     visit "/merchants/#{@merchant_1.id}/discounts/new"
     fill_in :threshold, with: 10
     fill_in :percent, with: 15
-    
+
     click_button "Submit"
 
-    expect(page).to have_content("Invalid Input - fields must be filled out correctly")
+    expect(current_path).to eq("/merchants/#{@merchant_1.id}/discounts/new")
+    # expect(page).to have_content("Invalid Input - fields must be filled out correctly")
   end
 
   it 'tests for symbols###edge' do
@@ -56,7 +57,7 @@ RSpec.describe 'create new discounts' do
 
     click_button "Submit"
 
-    expect(page).to have_content("Invalid Input - fields must be filled out correctly")
+    expect(current_path).to eq("/merchants/#{@merchant_1.id}/discounts/new")
   end
 
   it 'renders a new form if values are invalid ###edge' do
