@@ -1,4 +1,4 @@
-<div>
+<div class="feature-box">
   <header class="header">
     <h1>Merchant Show - Admin</h1>
   </header>
@@ -8,8 +8,8 @@
   </div>
 
   <p id="update"> <%= link_to "Update Merchant Information", "/admin/merchants/#{@merchant.id}/edit" %> </p>
-</div>
 
 <% flash.each do |type, message| %>
   <p><%= message %></p>
 <% end %>
+</div>

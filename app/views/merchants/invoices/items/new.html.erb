@@ -1,12 +1,14 @@
-<%= form_with url: merchants_path, method: :post, local: true do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
+<div class="feature-box">
+  <%= form_with url: merchants_path, method: :post, local: true do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
 
-  <%= form.label :description %>
-  <%= form.text_field :description %>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
 
-  <%= form.label :unit_price %>
-  <%= form.number_field :unit_price %>
+    <%= form.label :unit_price %>
+    <%= form.number_field :unit_price %>
 
-  <%= form.submit "Submit" %>
-<% end %>
+    <%= form.submit "Submit" %>
+  <% end %>
+</div>

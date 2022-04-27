@@ -1,7 +1,17 @@
-<h1>WELCOME TO THE LITTLE ESTY SHOP</h1>
+<div class="feature-box">
 
-<%= button_to "Admin Merchants", "/admin/merchants", method: :get %><br>
+  <h1>WELCOME TO THE LITTLE ESTY SHOP</h1>
 
-<div class="button-to">
-  <%= button_to "Merchants Index", "/merchants", method: :get %>
+  <div class="button-to">
+    <%= button_to "Merchants Index", "/merchants", method: :get %>
+  </div>
+
+  <div class="button-to">
+    <%= button_to "Admin Merchants Index", "/admin/merchants", method: :get %><br>
+  </div>
+
+  <div class="button-to">
+    <%= button_to "Admin Invoices Index", "/admin/invoices", method: :get %>
+  </div>
+
 </div>

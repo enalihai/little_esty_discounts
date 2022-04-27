@@ -1,6 +1,11 @@
-<%= form_with url: "/admin/merchants/#{@merchant.id}", method: :patch, local: true do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name, value: @merchant.name %>
+<div class="feature-box">
 
-  <%= form.submit %>
-<% end %>
+  <%= form_with url: "/admin/merchants/#{@merchant.id}", method: :patch, local: true do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name, value: @merchant.name %>
+
+    <div class="button-to">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>

@@ -1,6 +1,7 @@
 class MerchantDiscountsController < ApplicationController
   def index
     @merchant = Merchant.find(params[:id])
+    holiday_list
   end
 
   def create

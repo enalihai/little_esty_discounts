@@ -69,9 +69,12 @@ RSpec.describe "Merchant Dashboard" do
     visit "/merchants/#{@merchant_1.id}/discounts"
 
     within("header") do
-      expect(page).to have_content("Memorial Day - 2022-05-30")
-      expect(page).to have_content("Juneteenth - 2022-06-30")
-      expect(page).to have_content("Independence Day - 2022-07-04")
+      expect(page).to have_content("Memorial Day")
+      expect(page).to have_content("Juneteenth")
+      expect(page).to have_content("Independence Day")
+      expect(page).to have_content("2022-05-30")
+      expect(page).to have_content("2022-06-20")
+      expect(page).to have_content("2022-07-04")
     end
   end
 end
