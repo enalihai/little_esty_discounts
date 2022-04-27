@@ -110,6 +110,4 @@ RSpec.describe "Admin Invoices Show" do
     expect(page).to have_content("Discounts Applied: $4.50")
     expect(page).to have_content("Total Revenue After Discounts: $33.00")
   end
-
-  it 'displays the total discounted revenue'
 end
