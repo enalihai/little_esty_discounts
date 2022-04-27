@@ -46,7 +46,7 @@ RSpec.describe 'create new discounts' do
     click_button "Submit"
 
     expect(current_path).to eq("/merchants/#{@merchant_1.id}/discounts/new")
-    # expect(page).to have_content("Invalid Input - fields must be filled out correctly")
+    expect(page).to have_content("Invalid Input")
   end
 
   it 'tests for symbols###edge' do
@@ -58,6 +58,7 @@ RSpec.describe 'create new discounts' do
     click_button "Submit"
 
     expect(current_path).to eq("/merchants/#{@merchant_1.id}/discounts/new")
+    expect(page).to have_content("Invalid Input")
   end
 
   it 'renders a new form if values are invalid ###edge' do
@@ -70,6 +71,7 @@ RSpec.describe 'create new discounts' do
     click_button "Submit"
 
     expect(current_path).to eq("/merchants/#{@merchant_1.id}/discounts/new")
+    expect(page).to have_content("Invalid Input")
   end
 
   it 'has a button to the discounts index' do
