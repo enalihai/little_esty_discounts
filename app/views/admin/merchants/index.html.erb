@@ -1,37 +1,39 @@
-  <header class="header">
-    <h1>Merchant Index - Admin</h1>
-  </header>
+<div class="feature-box">
+    <header class="header">
+      <h1>Merchant Index - Admin</h1>
+    </header>
 
-<div id="top-by-revenue">
-  <h1>Top by Revenue</h1>
-  <% @merchants.top_five_by_revenue.each do |merchant| %>
-    <%= link_to merchant.name, "/admin/merchants/#{merchant.id}" %>
-    <%= merchant.total_revenue_to_dollars %>
-    <%= merchant.best_day.strftime("Best Selling Date: %Y-%m-%d") %>
-    <br>
-  <% end %>
-</div>
+  <div id="top-by-revenue">
+    <h1>Top by Revenue</h1>
+    <% @merchants.top_five_by_revenue.each do |merchant| %>
+      <%= link_to merchant.name, "/admin/merchants/#{merchant.id}" %>
+      <%= merchant.total_revenue_to_dollars %>
+      <%= merchant.best_day.strftime("Best Selling Date: %Y-%m-%d") %>
+      <br>
+    <% end %>
+  </div>
 
-<div id="create-merchant">
-  <%= link_to "Create New Merchant", '/admin/merchants/new' %>
-</div>
+  <div id="create-merchant">
+    <%= link_to "Create New Merchant", '/admin/merchants/new' %>
+  </div>
 
-<div id="enabled-merchants">
-  <h1>Enabled Merchants</h1>
-  <% @merchants.enabled.each do |merchant| %>
-    <div id="merchant-<%= merchant.id %>">
-      <h3><%= link_to merchant.name, "/admin/merchants/#{merchant.id}" %></h3>
-      <%= button_to "Disable", "/admin/merchants/#{merchant.id}", params: {disable: true}, method: :patch %>
-    </div>
-  <% end %>
-</div>
+  <div id="enabled-merchants">
+    <h1>Enabled Merchants</h1>
+    <% @merchants.enabled.each do |merchant| %>
+      <div id="merchant-<%= merchant.id %>">
+          <h3><%= link_to merchant.name, "/admin/merchants/#{merchant.id}" %></h3>
+          <%= button_to "Disable", "/admin/merchants/#{merchant.id}", params: {disable: true}, method: :patch %>
+      </div>
+    <% end %>
+  </div>
 
-<div id="disabled-merchants">
-  <h1>Disabled Merchants</h1>
-  <% @merchants.disabled.each do |merchant| %>
-    <div id="merchant-<%= merchant.id %>">
-      <h3><%= link_to merchant.name, "/admin/merchants/#{merchant.id}" %></h3>
-      <%= button_to "Enable", "/admin/merchants/#{merchant.id}", params: {enable: true}, method: :patch %>
-    </div>
-  <% end %>
+  <div id="disabled-merchants">
+    <h1>Disabled Merchants</h1>
+    <% @merchants.disabled.each do |merchant| %>
+      <div id="merchant-<%= merchant.id %>">
+        <h3><%= link_to merchant.name, "/admin/merchants/#{merchant.id}" %></h3>
+        <%= button_to "Enable", "/admin/merchants/#{merchant.id}", params: {enable: true}, method: :patch %>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -56,4 +56,25 @@ RSpec.describe "Merchant Dashboard" do
 
     expect(page).to have_link("Create New Discount")
   end
+
+  it 'has a header of upcoming holidays' do
+    visit "/merchants/#{@merchant_1.id}/discounts"
+
+    within("header") do
+      expect(page).to have_content("Upcoming Holidays")
+    end
+  end
+
+  it 'displays the name and date of the next 3 us holidays' do
+    visit "/merchants/#{@merchant_1.id}/discounts"
+
+    within("header") do
+      expect(page).to have_content("Memorial Day")
+      expect(page).to have_content("Juneteenth")
+      expect(page).to have_content("Independence Day")
+      expect(page).to have_content("2022-05-30")
+      expect(page).to have_content("2022-06-20")
+      expect(page).to have_content("2022-07-04")
+    end
+  end
 end

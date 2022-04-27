@@ -1,5 +1,7 @@
-<%= render 'header' %>
+<div class="feature-box">
+  <%= render 'header' %>
 
-<% @invoices.each do |invoice| %>
-<p>Invoice ID: <%= link_to "#{invoice.id}", "/admin/invoices/#{invoice.id}" %></p>
-<% end %>
+  <% @invoices.each do |invoice| %>
+  <p>Invoice ID: <%= link_to "#{invoice.id}", "/admin/invoices/#{invoice.id}" %></p>
+  <% end %>
+</div>

@@ -24,9 +24,11 @@ This is an attempt to recreate an online store using Rails and CRUD functionalit
 - CRUD
 - Postico
 - RESTful
+- API
 
 ## Features
 - Can determine top fives of merchants, merchant days and item count
+- Can apply discounts and determine what new price is
 - Allows the admin to update files
 - Uses MVC strategy of development
 

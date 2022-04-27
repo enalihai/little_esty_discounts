@@ -1,6 +1,10 @@
-<%= form_with url: "/admin/merchants", method: :post, local: true do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
+<div class="feature-box">
+  <%= form_with url: "/admin/merchants", method: :post, local: true do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
 
-  <%= form.submit "Submit" %>
-<% end %>
+    <div class="button-to">
+      <%= form.submit "Submit" %>
+    </div>
+  <% end %>
+</div>
