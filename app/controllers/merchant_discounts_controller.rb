@@ -6,13 +6,15 @@ class MerchantDiscountsController < ApplicationController
   def create
     @merchant = Merchant.find(params[:id])
     @discount = @merchant.discounts.create(disc_params)
+    merch_id = @merchant.id
+    disc_id = @discount.id
 
     if @discount.save
       redirect_to "/merchants/#{@merchant.id}/discounts"
-      flash[:message] = "New Discount Created"
+      # flash[:message] = "New Discount Created"
     else
-      redirect_to "/merchants/#{@merchant.id}/discounts/#{@discount.id}/edit"
-      flash[:message] = "Invalid Input"
+      redirect_to "/merchants/#{merch_id}/discounts/new"
+      # flash[:message] = "Invalid Input"
     end
   end
 

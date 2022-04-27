@@ -38,16 +38,18 @@ RSpec.describe 'create new discounts' do
     end
   end
 
-  xit 'tests for empty input###edge' do
+  it 'tests for empty input###edge' do
     visit "/merchants/#{@merchant_1.id}/discounts/new"
     fill_in :threshold, with: 10
     fill_in :percent, with: 15
+
     click_button "Submit"
 
-    expect(page).to have_content("Invalid Input - fields must be filled out correctly")
+    expect(current_path).to eq("/merchants/#{@merchant_1.id}/discounts/new")
+    # expect(page).to have_content("Invalid Input - fields must be filled out correctly")
   end
 
-  xit 'tests for symbols###edge' do
+  it 'tests for symbols###edge' do
     visit "/merchants/#{@merchant_1.id}/discounts/new"
     fill_in :name, with: "Lou's Bobba"
     fill_in :threshold, with: 10
@@ -55,10 +57,10 @@ RSpec.describe 'create new discounts' do
 
     click_button "Submit"
 
-    expect(page).to have_content("Invalid Input - fields must be filled out correctly")
+    expect(current_path).to eq("/merchants/#{@merchant_1.id}/discounts/new")
   end
 
-  xit 'renders a new form if values are invalid ###edge' do
+  it 'renders a new form if values are invalid ###edge' do
     visit "/merchants/#{@merchant_1.id}/discounts/new"
 
     fill_in :name, with: "Lou's Bobba"
@@ -67,7 +69,7 @@ RSpec.describe 'create new discounts' do
 
     click_button "Submit"
 
-    expect(current_path).to eq("/merchants/#{@merchant_1.id}//discounts/new")
+    expect(current_path).to eq("/merchants/#{@merchant_1.id}/discounts/new")
   end
 
   it 'has a button to the discounts index' do

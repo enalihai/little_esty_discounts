@@ -25,8 +25,8 @@ class Item < ApplicationRecord
 
   end
 
-  def discount_applied(amount)
-    discounts.where('? >= discounts.threshold', amount)
-    .order(percent: :desc).first
-  end
+  # def discount_applied(amount)
+  #   discounts.where('? >= discounts.threshold', amount)
+  #   .order(percent: :desc).first
+  # end
 end

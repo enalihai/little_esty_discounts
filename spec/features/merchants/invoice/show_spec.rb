@@ -67,7 +67,7 @@ RSpec.describe 'the merchant invoice show page' do
     invoice_item_2 = item2.invoice_items.create(invoice_id:invoice_1.id, quantity:222, unit_price: 1000)
     visit "/merchants/#{merchant.id}/invoices/#{invoice_1.id}"
 
-    expect(page).to have_content("267000")
+    expect(page).to have_content("2670.00")
   end
 
   it 'shows total discounted revenue' do
@@ -89,7 +89,7 @@ RSpec.describe 'the merchant invoice show page' do
 
     visit "/merchants/#{merchant.id}/invoices/#{invoice_1.id}"
 
-    expect(page).to have_content("Total Revenue: 267000")
+    expect(page).to have_content("Total Revenue: 2670.00")
   end
 
   it 'has a button to show what discounts were applie' do
@@ -110,7 +110,7 @@ RSpec.describe 'the merchant invoice show page' do
     discount_2 = merchant_1.discounts.create!(name: "All Saint's Day", threshold: 15, percent: 20)
 
     visit "/merchants/#{merchant_1.id}/invoices/#{invoice_1.id}"
-    
+
     within "#item-#{invoice_item_1.id}" do
       click_button "Discounts Applied"
       expect(current_path).to eq("/merchants/#{merchant_1.id}/discounts")
