@@ -1,6 +1,9 @@
 <div class="feature-box">
   <header>
     <h4>Upcoming Holidays</h4>
+    <% @holidays.each do |holiday| %>
+      <p>name:<%= holiday.name %> date: <%= holiday.date %></p>
+    <% end %>
   </header>
   <h1>Discounts Index for <%= @merchant.name %> </h1>
   <ul id="discounts-list">
