@@ -30,4 +30,9 @@ class InvoiceItem < ApplicationRecord
       return false
     end
   end
+
+  # def discount_applied(amount)
+  #   discounts.where('? >= discounts.threshold', amount)
+  #   .order(percent: :desc).first
+  # end
 end

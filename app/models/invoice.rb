@@ -39,4 +39,9 @@ class Invoice < ApplicationRecord
     .group('invoice_items.id')
     .sum(&:applied_discount)
   end
+
+  # def discount_applied(amount)
+  #   discounts.where('? >= discounts.threshold', amount)
+  #   .order(percent: :desc).first
+  # end
 end

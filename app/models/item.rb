@@ -24,4 +24,9 @@ class Item < ApplicationRecord
             .created_at
 
   end
+
+  def discount_applied(amount)
+    discounts.where('? >= discounts.threshold', amount)
+    .order(percent: :desc).first
+  end
 end

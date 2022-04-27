@@ -92,6 +92,31 @@ RSpec.describe 'the merchant invoice show page' do
     expect(page).to have_content("Total Revenue: 267000")
   end
 
+  it 'has a button to show what discounts were applie' do
+    merchant_1 = Merchant.create!(name: "Mollys")
+    merchant_2 = Merchant.create!(name: "Berrys")
+
+    item_1 = merchant_1.items.create!(name: "Chocolate Chip", description: "IceCream", unit_price: 300)
+    item_2 = merchant_1.items.create!(name: "Milkshake", description: "Sweet Treat", unit_price: 150)
+
+    customer_1 = Customer.create!(first_name: "Luke", last_name: "Pascale")
+
+    invoice_1 = customer_1.invoices.create!(status: 1)
+
+    invoice_item_1 = InvoiceItem.create!(invoice_id: invoice_1.id, item_id: item_1.id, quantity: 10, unit_price: 300, status: 1)
+    invoice_item_2 = InvoiceItem.create!(invoice_id: invoice_1.id, item_id: item_2.id, quantity: 5, unit_price: 150, status: 1)
+
+    discount_1 = merchant_1.discounts.create!(name: "Christmas", threshold: 10, percent: 15)
+    discount_2 = merchant_1.discounts.create!(name: "All Saint's Day", threshold: 15, percent: 20)
+
+    visit "/merchants/#{merchant_1.id}/invoices/#{invoice_1.id}"
+    
+    within "#item-#{invoice_item_1.id}" do
+      click_button "Discounts Applied"
+      expect(current_path).to eq("/merchants/#{merchant_1.id}/discounts")
+    end
+  end
+
   describe 'as a merchant' do
     describe 'when i visit my merchant invoice show page' do
       before :each do

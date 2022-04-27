@@ -120,5 +120,12 @@ RSpec.describe Invoice, type: :model do
 
       expect(@invoice_1.discount_revenue).to eq(1500)
     end
+
+    # it 'can display discounts applied' do
+    #   @discount = @merchant.discounts.create!(name: "Brewfest", threshold: 5, percent: 50)
+    #   @discount_2 = @merchant.discounts.create!(name: "Nochance", threshold: 50000000, percent: 50)
+    #
+    #   expect(@invoice_1.items.discount_applied).to eq("Brewfest")
+    # end
   end
 end

@@ -22,6 +22,7 @@
         <%= form.select(:status, options_for_select([['Pending', :pending], ['Packaged', :packaged], ['Shipped', :shipped]], invoice_item.status)) %>
         <%= form.submit "Update Item Status" %>
       <% end %>
+      Discounts Applied: <%= button_to "Discounts Applied", "/merchants/#{@merchant.id}/discounts", method: :get %>
     <% end %>
   </div>
   <% end %>
