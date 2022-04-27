@@ -26,4 +26,7 @@
   <div class="link-to">
     <%= link_to "Create New Discount", "/merchants/#{@merchant.id}/discounts/new", method: :get %>
   </div>
+  <div class="button-to">
+    <%= button_to "Discounts Index", "/merchants/#{@merchant.id}/discounts", method: :get %>
+  </div>
 </div>
